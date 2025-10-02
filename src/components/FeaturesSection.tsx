@@ -1,33 +1,65 @@
 import { BarChart3, RefreshCw, Zap } from "lucide-react";
 
+import { useLanguage } from "../context/LanguageContext";
+
 export function FeaturesSection() {
+    const { language } = useLanguage();
+
   const features = [
     {
       icon: <RefreshCw className="w-8 h-8 text-[#EE7F27]" />,
-      title: "Gestión en tiempo real",
-      description: "Controla tu inventario en tiempo real y mantén un mejor seguimiento de tu stock."
+      title: {
+        es: "Gestión en tiempo real",
+        en: "Real-time management"
+      },
+      description: {
+        es: "Controla tu inventario en tiempo real y mantén un mejor seguimiento de tu stock.",
+        en: "Control your inventory in real time and keep better track of your stock."
+      }
     },
     {
       icon: <BarChart3 className="w-8 h-8 text-[#EE7F27]" />,
-      title: "Reportes inteligentes",
-      description: "Visualiza los datos que son importantes para tu negocio con reportes automatizados."
+      title: {
+        es: "Reportes inteligentes",
+        en: "Smart reports"
+      },
+      description: {
+        es: "Visualiza los datos que son importantes para tu negocio con reportes automatizados.",
+        en: "View the data that matters to your business with automated reports."
+      }
     },
     {
       icon: <Zap className="w-8 h-8 text-[#EE7F27]" />,
-      title: "Integración con sistemas",
-      description: "Conéctate fácilmente con tus herramientas actuales y sistemas existentes."
+      title: {
+        es: "Integración con sistemas",
+        en: "System integration"
+      },
+      description: {
+        es: "Conéctate fácilmente con tus herramientas actuales y sistemas existentes.",
+        en: "Easily connect with your current tools and existing systems."
+      }
     }
   ];
+
+  const sectionTitle = {
+    es: "Potencia tu negocio con StockWise",
+    en: "Boost your business with StockWise"
+  };
+
+  const sectionSubtitle = {
+    es: "Descubre cómo nuestras características avanzadas pueden transformar la gestión de tu inventario",
+    en: "Discover how our advanced features can transform your inventory management"
+  };
 
   return (
     <section id="features" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#302325] mb-4">
-            Potencia tu negocio con StockWise
+            {sectionTitle[language]}
           </h2>
           <p className="text-xl text-[#302325] max-w-3xl mx-auto">
-            Descubre cómo nuestras características avanzadas pueden transformar la gestión de tu inventario
+            {sectionSubtitle[language]}
           </p>
         </div>
         
@@ -41,10 +73,10 @@ export function FeaturesSection() {
                 {feature.icon}
               </div>
               <h3 className="text-xl font-bold text-[#302325] mb-4">
-                {feature.title}
+                {feature.title[language]}
               </h3>
               <p className="text-[#302325] leading-relaxed">
-                {feature.description}
+                {feature.description[language]}
               </p>
             </div>
           ))}
